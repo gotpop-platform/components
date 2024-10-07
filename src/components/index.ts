@@ -10,6 +10,7 @@ export * from "./HeaderMegaMenu"
 export * from "./Heading"
 export * from "./HeroItem"
 export * from "./layouts"
+export * from "./Metadata"
 export * from "./MobileMenuTrigger"
 export * from "./TableOfContents"
 

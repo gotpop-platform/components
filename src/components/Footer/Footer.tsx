@@ -1,4 +1,4 @@
-import { BaseLinePopOver } from "components"
+import { BaseLinePopOver } from "../BaseLinePopOver"
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 import {
   useCSS

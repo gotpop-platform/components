@@ -1,4 +1,4 @@
-import { Head } from "components"
+import { Head } from "../Head"
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 
 interface AppProps {
