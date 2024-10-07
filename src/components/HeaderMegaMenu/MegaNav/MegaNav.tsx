@@ -1,8 +1,8 @@
-import { jsxFactory, useCSS } from "@gotpop-platform/utils"
+import { mkClass, useCSS } from "@gotpop-platform/package-utilities"
 
-import { mkClass } from "@gotpop-platform/utils"
 import { MenuItem } from "../MenuItem"
 import { SubMenuContent } from "../SubMenuContent"
+import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 import { navData } from "./MegaNav.data"
 
 export const MegaNav = () => {

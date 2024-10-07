@@ -9,7 +9,7 @@ export * from "./Head"
 export * from "./HeaderMegaMenu"
 export * from "./Heading"
 export * from "./HeroItem"
-export * from "./Icon"
 export * from "./layouts"
 export * from "./MobileMenuTrigger"
 export * from "./TableOfContents"
+

@@ -1,7 +1,6 @@
-import { jsxFactory, useCSS } from "@gotpop-platform/utils"
+import { mkClass, useCSS } from "@gotpop-platform/package-utilities"
 
-import { mkClass } from "@gotpop-platform/utils"
-import { SITE_NAME } from "src/constants"
+import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 
 export const LogoMegaMenu = () => {
   const { css } = useCSS({ meta: import.meta })
@@ -28,7 +27,7 @@ export const LogoMegaMenu = () => {
           fill="currentColor"
         ></path>
       </svg>
-      <span>{SITE_NAME}</span>
+      <span>Site Name</span>
     </a>
   )
 }
