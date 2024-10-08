@@ -1,5 +1,6 @@
 @scope {
   :scope {
+    position: relative;
     display: grid;
     column-gap: var(--local-gutter);
     grid-template-columns:
@@ -7,7 +8,7 @@
       [center-start] repeat(
         12,
         [gutter-start] var(--gutter-columns) var(--gutter-columns) [gutter-end col-start]
-          minmax(0, 100px) [col-end]
+        clamp(1rem, round(5.5vw, 1rem), 10rem) [col-end]
       )
       [gutter-start] var(--gutter-columns) var(--gutter-columns)
       [center-end gutter-end] minmax(2rem, 1fr)
