@@ -1,14 +1,12 @@
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
-import {
-  useCSS
-} from "@gotpop-platform/package-utilities"
+import { useCSS } from "@gotpop-platform/package-utilities"
 
 type ButtonProps = {
   href: string
   children?: string | JSX.Element | JSX.Element[]
 }
 
-const Button = ({ href, children }: ButtonProps) => {
+export const Button = ({ href, children }: ButtonProps) => {
   const { css, useName } = useCSS({ meta: import.meta })
 
   return (
@@ -18,5 +16,3 @@ const Button = ({ href, children }: ButtonProps) => {
     </a>
   )
 }
-
-export default Button
