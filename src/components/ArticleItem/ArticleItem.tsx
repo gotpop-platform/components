@@ -1,11 +1,11 @@
-import type { MarkdownFileProps, StyleObjProps } from "@gotpop-platform/package-markdown"
+import type { MarkdownFileProps } from "@gotpop-platform/package-markdown"
 import { mkClass, mkUrl, useCSS } from "@gotpop-platform/package-utilities"
 
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 
 type ArticleComponentProps = {
   markdownFile: MarkdownFileProps
-  layout: StyleObjProps
+  layout: Record<string, string | number>
 }
 
 export function ArticleItem({ markdownFile, layout }: ArticleComponentProps): JSX.Element {
@@ -13,6 +13,7 @@ export function ArticleItem({ markdownFile, layout }: ArticleComponentProps): JS
     meta: import.meta,
     styles: layout,
   })
+
   const {
     pageMetadata: { title, description, slug },
   } = markdownFile
