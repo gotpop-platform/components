@@ -3,7 +3,7 @@ import { type SectionType } from "@gotpop-platform/package-markdown"
 
 type SectionRender = Pick<SectionType, "sectionHtml" | "sectionComponents">
 
-const PACKAGES = "@gotpop-platform/package-components"
+const PACKAGES = "../index"
 
 const componentsMapping: {
   [key: string]: () => Promise<any>
