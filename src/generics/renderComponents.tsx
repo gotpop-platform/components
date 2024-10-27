@@ -15,7 +15,7 @@ const componentsMapping: {
 
 async function loadComponent(componentName: string) {
   if (componentName in componentsMapping) {
-    return componentsMapping[componentName as keyof typeof componentsMapping]()
+    return componentsMapping[componentName]()
   }
 
   throw new Error(`Component ${componentName} not found`)

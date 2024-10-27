@@ -7,7 +7,7 @@ type SelectListProps = {
 
 export const useName = import.meta.file.split(".").shift()?.toLowerCase()
 
-const SelectList = () => {
+const Select = () => {
   const { css } = useCSS({ meta: import.meta })
 
   return (
@@ -27,4 +27,4 @@ const SelectList = () => {
   )
 }
 
-export default SelectList
+export default Select
