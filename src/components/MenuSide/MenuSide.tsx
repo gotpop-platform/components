@@ -1,74 +1,42 @@
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 import { useCSS } from "@gotpop-platform/package-utilities"
 
-export function MenuSide({
-  children,
-  isMain = false,
-  hasInner = false,
-  ...rest
-}: {
-  children?: string | JSX.Element | (string | JSX.Element)[]
-  isMain?: boolean
-  hasInner?: boolean
-  [key: string]: any
-}): JSX.Element {
+export function MenuSide({ allPageMetadata }: { allPageMetadata: Map<string, any> }): JSX.Element {
   const { css } = useCSS({ meta: import.meta })
 
+  const renderMenuItems = (metadata: Map<string, any>) => {
+    return Array.from(metadata.entries()).map(([key, value]) => {
+      if (value instanceof Map) {
+        return (
+          <li key={key}>
+            <details id={key}>
+              <summary>{key}</summary>
+              <div class="content">
+                <ul>{renderMenuItems(value)}</ul>
+              </div>
+            </details>
+          </li>
+        )
+      } else {
+        return (
+          <li key={key}>
+            <details id={key}>
+              <summary>{value.title}</summary>
+              <div class="content">
+                <p>{value.description}</p>
+                <a href={`/${value.slug}`}>Read Article</a>
+              </div>
+            </details>
+          </li>
+        )
+      }
+    })
+  }
+
   return (
-    <nav class="menu-side" {...rest}>
+    <nav class="menu-side">
       <style>{css}</style>
-      <ul>
-        <li>
-          <details id="getting-started" open>
-            <summary>
-              <a href="/">Getting started</a>
-            </summary>
-            <div class="content">
-              <p>Installation</p>
-            </div>
-          </details>
-        </li>
-        <li>
-          <details id="workflow">
-            <summary>Workflow</summary>
-            <div class="content">
-              <ul>
-                <li>
-                  <p>
-                    Everything displayed by CSS is a box. Understanding how the CSS Box Model works
-                    is therefore a core foundation of CSS.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <a href="#">Read Article</a>
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </details>
-        </li>
-        <li>
-          <details id="selectors">
-            <summary>Tutorials</summary>
-            <div class="content">
-              <ul>
-                <li>
-                  <p>
-                    Everything displayed by CSS is a box. Understanding how the CSS Box Model works
-                    is therefore a core foundation of CSS.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <a href="#">Read Article</a>
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </details>
-        </li>
-      </ul>
+      <ul>{renderMenuItems(allPageMetadata)}</ul>
     </nav>
   )
 }
