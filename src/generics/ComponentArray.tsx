@@ -28,7 +28,6 @@ export function withItems(Component: (props: WrappedProps) => JSX.Element) {
       } else {
         const layoutArray = layout(markdownItem)
         const layoutItem = layoutArray[index]
-        console.log("Processing index:", index, "LayoutItem:", layoutItem)
 
         if (!layoutItem) {
           console.error(`Layout item at index ${index} is undefined`)
