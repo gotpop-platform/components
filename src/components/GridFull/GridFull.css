@@ -1,0 +1,37 @@
+@scope {
+  :scope {
+    position: relative;
+    display: grid;
+    column-gap: var(--local-gutter);
+
+    /* --grid-tile-size: 16;
+    --grid-gap: 1px;
+    --grid-color: rgb(115, 92, 221);
+    --stagger-delay: 1.11; */
+    background-image: paint(grid);
+    /* justify-content: center;
+    margin: 0 auto; */
+
+    /* grid-template-columns: 1fr [center-start] repeat(71, [col-start] 16px [col-end]) [center-end] 1fr; */
+
+    grid-template-columns:
+      [full-start] 1fr
+      [center-start] repeat(
+        12,
+        [gutter-start] var(--gutter-columns) var(--gutter-columns) [gutter-end col-start]
+          clamp(1rem, round(6vw, 1rem), 10rem) [col-end]
+      )
+      [gutter-start] var(--gutter-columns) var(--gutter-columns)
+      [center-end gutter-end] 1fr
+      [full-end];
+
+    &.root-grid {
+      min-height: 100dvh;
+      grid-template-rows:
+        [header-start] auto [header-end] var(--spacing-md) [main-start] 1fr [main-end] var(
+          --spacing-xl
+        )
+        [footer-start] auto [footer-end];
+    }
+  }
+}

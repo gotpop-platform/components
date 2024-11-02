@@ -4,15 +4,6 @@
   initial-value: 0;
 }
 
-@keyframes loop {
-  0% {
-    --colour-new: purple;
-  }
-  100% {
-    --colour-new: yellow;
-  }
-}
-
 @keyframes progressAnimation {
   0% {
     --animation-progress: 0;
@@ -27,11 +18,10 @@
     --bytemare-tile-size: 16;
     --bytemare-gap: 1px;
     --bytemare-color: rgb(115, 92, 221);
-    /* --bytemare-probability: 0.5; */
+    --stagger-delay: 1.11;
+    background-image: paint(bytemare);
+    /* animation: progressAnimation 1s infinite alternate; */
 
-    --stagger-delay: 0.02;
-
-    /* background-color: var(--white); */
     border-radius: var(--radius-lg);
     grid-column: var(--grid-column-centre);
     grid-row: 1;
@@ -40,16 +30,12 @@
     display: grid;
     grid-template-columns: subgrid;
 
-    /* --bytemare-color: var(--colour-new); */
-    animation: progressAnimation 2s forwards;
-    background-image: paint(bytemare);
-
     h1 {
       font-size: var(--font-scaled-xl);
       margin-block-end: var(--spacing-md);
       line-height: 4rem;
       padding-top: calc(6rem - 1cap);
-      /* color: var(--white); */
+      color: var(--white);
     }
 
     .section {
@@ -60,7 +46,6 @@
 
     .hero-box {
       grid-column: -10 / -3;
-      /* background-color: yellow; */
       padding-block: 1rem;
 
       svg {

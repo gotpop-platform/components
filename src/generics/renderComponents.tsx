@@ -3,12 +3,17 @@ import { type SectionType } from "@gotpop-platform/package-markdown"
 
 type SectionRender = Pick<SectionType, "sectionHtml" | "sectionComponents">
 
-const PACKAGES = "../index"
+const PACKAGES = "../components"
 
 const componentsMapping: {
   [key: string]: () => Promise<any>
 } = {
-  Button: () => import(PACKAGES).then((mod) => mod.Button),
+  Button: () =>
+    import(PACKAGES + "/forms/Button").then((mod) => {
+      // console.log("mod :", mod)
+
+      return mod.Button
+    }),
   Heading: () => import(PACKAGES).then((mod) => mod.Heading),
   CodeBlock: () => import(PACKAGES).then((mod) => mod.CodeBlock),
 }

@@ -1,6 +1,5 @@
 import type { MarkdownFileProps } from "@gotpop-platform/package-markdown"
 import { mkClass, mkUrl, useCSS } from "@gotpop-platform/package-utilities"
-
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 
 type ArticleComponentProps = {
@@ -14,19 +13,15 @@ export function ArticleItem({ markdownFile, layout }: ArticleComponentProps): JS
     styles: layout,
   })
 
-  const {
-    pageMetadata: { title, description, slug },
-  } = markdownFile
-
   return (
     <article class={mkClass(import.meta.file)}>
       <style>{css}</style>
-      <a className="link-header" href={mkUrl(slug)}>
+      <a className="link-header" href={mkUrl(markdownFile?.pageMetadata.slug)}>
         <h3>
-          <span>{title}</span>
+          <span>{markdownFile?.pageMetadata.title}</span>
         </h3>
       </a>
-      <p>{description}</p>
+      <p>{markdownFile?.pageMetadata.description ?? ""}</p>
     </article>
   )
 }

@@ -10,7 +10,7 @@
     --grid-column: center;
 
     /* display: var(--display-header); */
-    /* view-transition-name: header; */
+    view-transition-name: header;
     background-color: transparent;
     grid-column: var(--grid-column);
     grid-template-columns: var(--grid-template-columns);
