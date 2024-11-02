@@ -22,12 +22,15 @@ export const Head = ({ title }: { title: string }) => {
               {
                 "urls": [
                   "/", 
-                  "articles/article-1", 
-                  "articles/article-2", 
-                  "articles/article-3", 
-                  "articles/article-4", 
-                  "articles/article-5", 
-                  "articles/article-6"
+                  "features/feature-1", 
+                  "features/feature-2", 
+                  "features/feature-3", 
+                  "features/feature-4", 
+                  "features/feature-5", 
+                  "features/feature-6",
+                  "features",
+                  "docs",
+                  "components",
                 ]
               }
             ]
