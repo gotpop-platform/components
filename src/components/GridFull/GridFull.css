@@ -3,16 +3,7 @@
     position: relative;
     display: grid;
     column-gap: var(--local-gutter);
-
-    /* --grid-tile-size: 16;
-    --grid-gap: 1px;
-    --grid-color: rgb(115, 92, 221);
-    --stagger-delay: 1.11; */
     background-image: paint(grid);
-    /* justify-content: center;
-    margin: 0 auto; */
-
-    /* grid-template-columns: 1fr [center-start] repeat(71, [col-start] 16px [col-end]) [center-end] 1fr; */
 
     grid-template-columns:
       [full-start] 1fr

@@ -4,13 +4,25 @@ import { useCSS } from "@gotpop-platform/package-utilities"
 export function MenuSide({ allPageMetadata }: { allPageMetadata: Map<string, any> }): JSX.Element {
   const { css } = useCSS({ meta: import.meta })
 
+  const toSentenceCase = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+  }
+
   const renderMenuItems = (metadata: Map<string, any>) => {
-    return Array.from(metadata.entries()).map(([key, value]) => {
+    console.log("metadata :", metadata)
+
+    if (!metadata) {
+      return null
+    }
+
+    const theArray = Array.from(metadata?.entries())
+
+    return theArray.map(([key, value]) => {
       if (value instanceof Map) {
         return (
-          <li key={key}>
-            <details id={key}>
-              <summary>{key}</summary>
+          <li>
+            <details id={key} open>
+              <summary>{toSentenceCase(key)}</summary>
               <div class="content">
                 <ul>{renderMenuItems(value)}</ul>
               </div>
@@ -19,14 +31,8 @@ export function MenuSide({ allPageMetadata }: { allPageMetadata: Map<string, any
         )
       } else {
         return (
-          <li key={key}>
-            <details id={key}>
-              <summary>{value.title}</summary>
-              <div class="content">
-                <p>{value.description}</p>
-                <a href={`/${value.slug}`}>Read Article</a>
-              </div>
-            </details>
+          <li>
+            <a href={`/${value.slug}`}>{value.title}</a>
           </li>
         )
       }

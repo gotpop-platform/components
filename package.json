@@ -1,6 +1,6 @@
 {
   "name": "@gotpop-platform/package-components",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "A collection of JSX components for various projects.",
   "main": "src/index.ts",
   "scripts": {
