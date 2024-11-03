@@ -9,8 +9,6 @@ export function MenuSide({ allPageMetadata }: { allPageMetadata: Map<string, any
   }
 
   const renderMenuItems = (metadata: Map<string, any>) => {
-    console.log("metadata :", metadata)
-
     if (!metadata) {
       return null
     }
