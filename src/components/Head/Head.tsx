@@ -1,7 +1,29 @@
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 
-export const Head = ({ title }: { title: string }) => {
+interface ScriptPath {
+  entryPoint: string
+  hashedPath: string
+  type: "script" | "worklet"
+}
+
+export const Head = ({
+  title,
+  scriptPaths,
+}: {
+  title: string
+  scriptPaths: Record<string, string>
+}) => {
   const baseStylePath = "/assets/styles/index.css"
+  // console.log("scriptPaths >>>>>>>:", scriptPaths)
+
+  const renderScripts = (scripts: Record<string, string>) => {
+    return scripts.map((script) => {
+      if (script.type === "worklet") {
+        return <script>{`CSS.paintWorklet.addModule('${script.hashedPath}');`}</script>
+      }
+      return <script type="module" src={script.hashedPath} />
+    })
+  }
 
   return (
     <head>
@@ -12,9 +34,7 @@ export const Head = ({ title }: { title: string }) => {
       <title>{title}</title>
       <link rel="icon" href="/assets/img/favicon.png" />
       <link rel="stylesheet" href={baseStylePath} />
-      {/* <script type="module" src="/assets/js/HeroItem.js"></script> */}
-      <script type="module" src="/assets/js/script.js"></script>
-      <script>CSS.paintWorklet.addModule('/assets/js/grid.js');</script>
+      {renderScripts(scriptPaths)}
       {process.env.NODE_ENV === "production" ? (
         <script type="speculationrules">
           {`{
