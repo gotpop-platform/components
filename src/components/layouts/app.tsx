@@ -4,7 +4,7 @@ import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 interface AppProps {
   children?: string | JSX.Element | JSX.Element[]
   title: string
-  scriptPaths: Record<string, string>
+  scriptPaths: Record<string, string>[]
 }
 
 export const AppTheme = ({ title, scriptPaths, children }: AppProps) => {

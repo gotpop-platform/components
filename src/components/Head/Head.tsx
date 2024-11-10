@@ -11,12 +11,11 @@ export const Head = ({
   scriptPaths,
 }: {
   title: string
-  scriptPaths: Record<string, string>
+  scriptPaths: Record<string, string>[]
 }) => {
   const baseStylePath = "/assets/styles/index.css"
-  // console.log("scriptPaths >>>>>>>:", scriptPaths)
 
-  const renderScripts = (scripts: Record<string, string>) => {
+  const renderScripts = (scripts: Record<string, string>[]) => {
     return scripts.map((script) => {
       if (script.type === "worklet") {
         return <script>{`CSS.paintWorklet.addModule('${script.hashedPath}');`}</script>
