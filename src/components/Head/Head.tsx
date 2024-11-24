@@ -1,4 +1,4 @@
-import { Config } from "../../../../../sites/site-baseline/src/config"
+// import { Config } from "../../../../../sites/site-baseline/src/config"
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 
 interface ScriptPath {
@@ -10,8 +10,10 @@ interface ScriptPath {
 export const Head = ({
   title,
   scriptPaths,
+  Config,
 }: {
   title: string
+  Config: Record<any, any>
   scriptPaths: Record<string, string>[]
 }) => {
   const baseStylePath = "/assets/styles/index.css"
