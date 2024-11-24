@@ -34,8 +34,9 @@ export const Head = ({
       <title>{title}</title>
       <link rel="icon" href="/assets/img/favicon.png" />
       <link rel="stylesheet" href={baseStylePath} />
-      <script>
-        {`
+      {process.env.NODE_ENV === "development" ? (
+        <script>
+          {`
           const ws = new WebSocket('ws://localhost:${Config.SERVER.PORT}');
           
           ws.onmessage = (event) => {
@@ -51,7 +52,8 @@ export const Head = ({
             }, 1000);
           };
         `}
-      </script>
+        </script>
+      ) : null}
       {renderScripts(scriptPaths)}
       {process.env.NODE_ENV === "production" ? (
         <script type="speculationrules">
