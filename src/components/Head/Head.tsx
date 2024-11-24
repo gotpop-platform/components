@@ -1,3 +1,4 @@
+import { Config } from "../../../../../sites/site-baseline/src/config"
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 
 interface ScriptPath {
@@ -33,6 +34,24 @@ export const Head = ({
       <title>{title}</title>
       <link rel="icon" href="/assets/img/favicon.png" />
       <link rel="stylesheet" href={baseStylePath} />
+      <script>
+        {`
+          const ws = new WebSocket('ws://localhost:${Config.SERVER.PORT}');
+          
+          ws.onmessage = (event) => {
+            console.log('🔄 Reloading page...');
+            window.location.reload(true);
+          };
+          
+          ws.onclose = () => {
+            console.log('WebSocket disconnected');
+            // Try to reconnect after a delay
+            setTimeout(() => {
+              window.location.reload(true);
+            }, 1000);
+          };
+        `}
+      </script>
       {renderScripts(scriptPaths)}
       {process.env.NODE_ENV === "production" ? (
         <script type="speculationrules">
