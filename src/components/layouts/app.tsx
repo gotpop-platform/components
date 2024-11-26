@@ -5,17 +5,16 @@ interface AppProps {
   children?: string | JSX.Element | JSX.Element[]
   title: string
   scriptPaths: Record<string, string>[]
-  Config: Record<any, any>
 }
 
-export const AppTheme = ({ title, scriptPaths, Config, children }: AppProps) => {
+export const AppTheme = ({ title, scriptPaths, children }: AppProps) => {
   const doc = "<!DOCTYPE html>"
 
   return (
     doc +
     (
       <html lang="en">
-        <Head title={title} scriptPaths={scriptPaths} Config={Config} />
+        <Head title={title} scriptPaths={scriptPaths} />
         <body class="body">{children}</body>
       </html>
     )

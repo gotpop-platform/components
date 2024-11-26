@@ -1,4 +1,3 @@
-// import { Config } from "../../../../../sites/site-baseline/src/config"
 import { jsxFactory } from "@gotpop-platform/package-jsx-factory"
 
 interface ScriptPath {
@@ -10,10 +9,8 @@ interface ScriptPath {
 export const Head = ({
   title,
   scriptPaths,
-  Config,
 }: {
   title: string
-  Config: Record<any, any>
   scriptPaths: Record<string, string>[]
 }) => {
   const baseStylePath = "/assets/styles/index.css"
@@ -39,7 +36,7 @@ export const Head = ({
       {process.env.NODE_ENV === "development" ? (
         <script>
           {`
-          const ws = new WebSocket('ws://localhost:${Config.SERVER.PORT}');
+          const ws = new WebSocket('ws://localhost:${process.env.npm_package_config_server_port}');
           
           ws.onmessage = (event) => {
             console.log('🔄 Reloading page...');
